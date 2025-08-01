@@ -1,0 +1,195 @@
+.container {
+  --padding: 16px;
+
+  -webkit-appearance: none;
+  appearance: none;
+  width: 300px;
+  height: 300px;
+  border-radius: 16px;
+  border: 1px solid #e4e4e4;
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: var(--padding);
+  margin: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  background-color: #ececec;
+  position: absolute;
+  top: calc(100% - var(--padding) - 100px);
+  left: var(--padding);
+}
+
+.container:checked {
+  background-color: rgba(143, 151, 243, 0.04);
+}
+
+.container:checked::after {
+  background-color: #8f97f3;
+  top: var(--padding);
+  left: calc(100% - var(--padding) - 100px);
+}
+
+@keyframes reset-progress {
+  0% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      0% 0%,
+      0% 50%,
+      0% 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  12.5% {
+    clip-path: polygon(
+      50% 50%,
+      0% 0%,
+      0% 0%,
+      0% 50%,
+      0% 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  25% {
+    clip-path: polygon(
+      50% 50%,
+      0% 50%,
+      0% 50%,
+      0% 50%,
+      0% 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  37.5% {
+    clip-path: polygon(
+      50% 50%,
+      0% 100%,
+      0% 100%,
+      0% 100%,
+      0% 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      50% 50%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  62.5% {
+    clip-path: polygon(
+      50% 50%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      50% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  87.5% {
+    clip-path: polygon(
+      50% 50%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      50% 0%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      50% 0%,
+      50% 0%,
+      50% 0%,
+      50% 0%,
+      50% 0%,
+      50% 0%,
+      50% 0%,
+      50% 0%,
+      50% 0%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .container::after {
+    transition: all 200ms ease-out;
+  }
+  .container {
+    transition: background-color 200ms ease-out;
+  }
+
+  .container::before {
+    content: "";
+    border-radius: 16px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+  }
+
+  .container:checked::before {
+    animation: reset-progress linear 2000ms forwards;
+    border: 4px solid #8f97f3;
+  }
+}
