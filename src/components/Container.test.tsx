@@ -26,6 +26,7 @@ describe("Container Component", () => {
         expect(handleClick).toHaveReturnedWith(false);
       },
       {
+        // extra few hundred ms leeway to account for state & rendering overhead
         timeout: 2300,
       }
     );
